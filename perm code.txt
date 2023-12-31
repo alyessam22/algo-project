@@ -1,0 +1,15 @@
+def generate_permutations(arr):
+    if len(arr) <= 1:
+        return [arr]
+    
+    last_element = arr[-1]
+    print(last_element)
+    prev_permutations = generate_permutations(arr[:-1])
+    
+    permutations = []
+    for prev_permutation in prev_permutations:
+        for i in range(len(prev_permutation) + 1):
+            new_permutation = prev_permutation[:i] + [last_element] + prev_permutation[i:]
+            permutations.append(new_permutation)
+    
+    return permutations
